@@ -1,0 +1,19 @@
+
+$w.onReady(function () {
+	//TODO: write your page related code here...
+
+});
+
+$w.onReady(function () {
+$w("#dataset2").onReady(function (){
+  $w("#repeater1").forEachItem(($w) => {
+
+  if ($w("#atividadeT").text.length >= 50){
+        $w("#atividadeT").text = $w("#atividadeT").text.slice(0, 50) + '...' ; 
+      }
+  if ($w("#descri").text.length >= 50){
+        $w("#descri").text = $w("#descri").text.slice(0, 50) + '...' ; 
+      }
+    } 
+  )}
+)});
