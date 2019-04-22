@@ -1,0 +1,31 @@
+$w.onReady(() => {
+  loadContinents();
+});
+
+let lastFilterCategoria;
+
+export function iCategoria_change(event, $w) {
+	filter($w('#iCategoria').value);
+}
+
+function filter(categoria) {
+  if (lastFilterCategoria !== categoria) {
+    let newFilter = wixData.filter();
+    if (categoria)
+      newFilter = newFilter.contains('categoria', categoria);
+    $w('#dataset2').setFilter(newFilter);		 
+    lastFilterCategoria = categoria;
+  }
+}
+
+function loadContinents() {
+  wixData.query('Categorias')
+	  .find()
+	  .then(res => {
+	  	let options = [{"value": '', "label": 'O que você quer fazer?'}];
+	  	options.push(...res.items.map(categoria => {
+	  		return {"value": categoria.title, "label": categoria.title};
+	  	}));
+	  	$w('#iCategoria').options = options;
+	  });
+}
