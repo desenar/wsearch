@@ -1,0 +1,43 @@
+//Codigo para limitar numero de caracteres nos titulos e descrição
+import wixData from "wix-data";
+
+$w.onReady(function () {
+	//TODO: write your page related code here...
+ 
+});
+
+
+export function iCategoria_change(event) {
+	let searchCategoria = $w("#iCategoria").value;
+	$w("#dataset2").setFilter(wixData.filter().contains("categoria",searchCategoria));	
+}
+
+
+export function iCategoria2_change(event) {
+	let searchCategoria2 = $w("#iCategoria2").value ;
+	$w("#dataset2").onReady( () => {
+	
+		if (searchCategoria2 === "toda") {
+			$w("#dataset2").setFilter(wixData.filter().eq("toda", true));
+		}
+		if (searchCategoria2 === "Beber") {
+			$w("#dataset2").setFilter(wixData.filter().eq("beber", true));
+		}
+		if (searchCategoria2 === "Fazer") {
+			$w("#dataset2").setFilter(wixData.filter().eq("fazer", true));
+		}
+		if (searchCategoria2 === "Ver") {
+			$w("#dataset2").setFilter(wixData.filter().eq("ver", true));
+		}
+		if (searchCategoria2 === "Comer") {
+			$w("#dataset2").setFilter(wixData.filter().eq("comer", true));
+		}
+		if (searchCategoria2 === "Dormir") {
+			$w("#dataset2").setFilter(wixData.filter().eq("Dormir", true));
+		}
+		if (searchCategoria2 === "Comprar") {
+			$w("#dataset2").setFilter(wixData.filter().eq("comprar", true));
+		}
+	})
+	//Add your code for this event here: 
+}
